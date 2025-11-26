@@ -5,9 +5,12 @@
   text-align: center;
 }
 
+/* HERO IMAGE (OPDATERET) */
 .home-hero img {
   width: 100%;
-  height: auto;
+  height: 350px;      /* fast højde */
+  object-fit: cover;  /* beskærer korrekt */
+  object-position: center;
   display: block;
 }
 
