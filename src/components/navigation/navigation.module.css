@@ -1,16 +1,111 @@
-.header {
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #ddd;
+/* ---------- TOPBAR ---------- */
+.nav {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.8rem 1.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+/* Logo */
 .logo {
-  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 0.1rem;
+  text-decoration: none;
+  font-family: "Georgia", "Times New Roman", serif;
 }
 
-.nav {
+.logoMain {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111111;
+}
+
+.logoAccent {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ff7aa8;
+}
+
+/* Ikoner til højre */
+.icons {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.iconButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #ff7aa8;
+  padding: 0;
+}
+
+/* ---------- DROPDOWN MENU ---------- */
+/* Ligger i normalt flow (INGEN absolute) og kan derfor skubbe main ned */
+.dropdown {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+
+  overflow: hidden;
+  max-height: 0;
+  padding: 0; /* ingen højde, når menuen er lukket */
+
+  transition: max-height 0.25s ease, padding 0.25s ease;
+}
+
+.dropdownOpen {
+  max-height: 320px; /* nok til alle links */
+  padding: 1.5rem 0 2rem;
+}
+
+.menuList {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  list-style: none;
+  text-align: center;
+}
+
+.menuList li {
+  margin-bottom: 1.2rem;
+}
+
+.menuList a {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.menuList a:hover {
+  color: #ff7aa8;
+}
+
+/* ---------- LIDT TUNING PÅ STØRRE SKÆRME ---------- */
+@media (min-width: 900px) {
+  .inner {
+    padding: 1rem 2rem;
+  }
+
+  .menuList {
+    padding: 0 2rem;
+  }
 }

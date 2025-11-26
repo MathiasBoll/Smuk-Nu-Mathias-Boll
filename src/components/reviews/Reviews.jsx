@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../../services/api";
 import { toast } from "react-toastify";
+import styles from "./reviews.module.css";
 
 function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -23,22 +24,31 @@ function Reviews() {
     load();
   }, []);
 
-  if (loading) return <p>Henter anmeldelser...</p>;
+  if (loading) {
+    return (
+      <section className={styles.reviews}>
+        <h2>Det siger vores kunder</h2>
+        <p>Henter anmeldelser...</p>
+      </section>
+    );
+  }
 
   return (
-    <section>
+    <section className={styles.reviews}>
       <h2>Det siger vores kunder</h2>
-      <ul>
-        {reviews.map((review) => (
-          <li key={review._id ?? review.id}>
-            {review.image && (
-              <img src={review.image} alt={review.name} width={80} />
+
+      <div className={styles.list}>
+        {reviews.map((r) => (
+          <div key={r._id ?? r.id} className={styles.review}>
+            {r.image && (
+              <img src={r.image} alt={r.name} className={styles.image} />
             )}
-            <h3>{review.name}</h3>
-            <p>{review.content}</p>
-          </li>
+
+            <h3>{r.name}</h3>
+            <p>{r.content}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

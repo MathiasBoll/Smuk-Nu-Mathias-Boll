@@ -1,19 +1,82 @@
-/* Fjern Vite-demo styling */
-#root {
-  width: 100%;
+/* --- GLOBAL RESET --- */
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
-/* Global styling */
-body {
+/* --- ROOT LAYOUT RESET --- */
+#root {
+  width: 100%;
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background-color: #ffffff;
-  color: #000;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  color: #1f1f1f;
 }
 
-/* Gør main fleksibel, så footer ligger nederst */
+/* App-container så footer kan ligge nederst */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- MAIN CONTENT WRAPPER --- */
 main {
   flex: 1;
+  max-width: 1100px; /* centrér indhold som i Figma */
+  margin: 0 auto;
+  padding: 0 1rem 2rem; /* INGEN top-padding → ingen hul over navigationen */
+  text-align: left; /* tekst venstrestillet */
+}
+
+/* --- STANDARD TYPOGRAPHY --- */
+main h1,
+main h2,
+main h3,
+main p,
+main ul {
+  max-width: 900px; /* smallere content, matcher Figma */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- OVERSKRIFTER (FIGMA STYLE) --- */
+main h1 {
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+main h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+main h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* --- LISTE STYLE --- */
+main ul {
+  padding-left: 1.4rem; /* korrigerer bullets */
+  margin-bottom: 1rem;
+}
+
+main ul li {
+  margin-bottom: 0.8rem;
+}
+
+/* --- PARAGRAPH STYLE --- */
+main p {
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
 }

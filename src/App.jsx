@@ -11,6 +11,8 @@ import Treatments from "./pages/Treatments.jsx";
 import TreatmentDetails from "./pages/TreatmentDetails.jsx";
 import Products from "./pages/Products.jsx";
 import Contact from "./pages/Contact.jsx";
+import Ask from "./pages/Ask.jsx";      // NY
+import Join from "./pages/Join.jsx";    // NY
 
 import "./App.css";
 
@@ -25,13 +27,19 @@ function App() {
           <Route path="/treatments" element={<Treatments />} />
           <Route path="/treatments/:id" element={<TreatmentDetails />} />
           <Route path="/products" element={<Products />} />
+
+          {/* Kontakt (generel) */}
           <Route path="/contact" element={<Contact />} />
+
+          {/* Figma-sider */}
+          <Route path="/ask" element={<Ask />} />
+          <Route path="/join" element={<Join />} />
+
           <Route path="*" element={<p>Siden blev ikke fundet.</p>} />
         </Routes>
       </main>
 
       <Footer />
-
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
