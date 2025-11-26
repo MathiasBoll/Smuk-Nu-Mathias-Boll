@@ -1,0 +1,45 @@
+/* --- HERO SEKTION (FORSIDE) --- */
+
+.home-hero {
+  width: 100%;
+  text-align: center;
+}
+
+.home-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.home-hero-box {
+  background: #ff9fc4;      /* lyserød boks som i Figma */
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.home-hero-box h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.home-hero-box p {
+  max-width: 280px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.5;
+}
+
+.home-hero-btn {
+  background: #ff7aa8;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* --- MARGIN BETWEEN SECTIONS --- */
+section {
+  margin-bottom: 3rem;
+}

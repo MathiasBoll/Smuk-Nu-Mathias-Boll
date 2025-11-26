@@ -15,8 +15,6 @@ async function request(path, options = {}) {
     throw new Error(`API-fejl ved ${path}: ${res.status}`);
   }
 
-  // Hvis API'et ikke sender JSON, kan dette give fejl –
-  // men det er det mest normale til skoleopgaver.
   return res.json();
 }
 
@@ -24,7 +22,6 @@ async function request(path, options = {}) {
 
 export async function getProducts() {
   const json = await request("/products");
-  // typisk format: { message: "...", data: [...] }
   return json.data ?? json;
 }
 
