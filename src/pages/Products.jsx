@@ -21,7 +21,6 @@ function Products() {
         setLoading(false);
       }
     }
-
     load();
   }, []);
 
@@ -29,53 +28,50 @@ function Products() {
 
   return (
     <>
-      {/* Hero til produktsiden */}
       <PageHeader
         variant="dark"
         title="SKØNNE PRODUKTER"
         subtitle="Herunder finder du alle vores produkter."
       />
 
-      <main className={styles.page}>
-        <section className={styles.productsList}>
-          <ul className={styles.list}>
-            {products.map((product) => (
-              <li
-                key={product._id ?? product.id}
-                className={styles.item}
-              >
-                {product.image && (
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className={styles.image}
-                  />
+      <section className={styles.products}>
+        <ul className={styles.list}>
+          {products.map((product) => (
+            <li
+              key={product._id ?? product.id}
+              className={styles.item}
+            >
+              {product.image && (
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className={styles.image}
+                />
+              )}
+
+              <div className={styles.info}>
+                <h2>{product.title}</h2>
+                {product.price && (
+                  <p className={styles.price}>{product.price} kr.</p>
                 )}
+                {product.description && (
+                  <p className={styles.description}>
+                    {product.description}
+                  </p>
+                )}
+              </div>
 
-                <div className={styles.info}>
-                  <h2>{product.title}</h2>
-                  {product.price && (
-                    <p className={styles.price}>{product.price} kr.</p>
-                  )}
-                  {product.description && (
-                    <p className={styles.description}>
-                      {product.description}
-                    </p>
-                  )}
-                </div>
-
-                <button
-                  type="button"
-                  className={styles.buyButton}
-                  onClick={() => addItem(product)}
-                >
-                  KØB
-                </button>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </main>
+              <button
+                type="button"
+                className={styles.buyButton}
+                onClick={() => addItem(product)}
+              >
+                KØB
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
     </>
   );
 }

@@ -1,60 +1,63 @@
+/* src/pages/products.module.css */
+
+/* Hele siden omkring produkterne */
 .page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 1rem 4rem;
+  padding: 2rem 0 3rem;
 }
 
-/* Wrapper omkring produkt-listen */
+/* Wrapper for produktlisten – nu samme bredde som main */
 .productsList {
-  margin-top: 2rem;
+  width: 100%;          /* fylder hele main */
+  margin: 0 auto;       /* centrér, hvis main engang får mere bredde */
 }
 
-/* Selve listen */
+/* Selve UL-listen */
 .list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
-/* En enkelt vare */
+/* Et enkelt produktkort */
 .item {
-  display: grid;
-  grid-template-columns: 120px 1fr auto;
-  gap: 1rem;
+  display: flex;
   align-items: center;
-  padding: 1rem 1.25rem;
-  border-radius: 14px;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 20px;
   background: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  width: 100%;            /* fylder hele kolonnen */
+  box-sizing: border-box; /* padding tæller med i bredden */
 }
 
 /* Produktbillede */
 .image {
-  width: 120px;
-  height: auto;
-  border-radius: 10px;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  border-radius: 12px;
   object-fit: cover;
 }
 
-/* Tekstblok */
+/* Tekstdelen */
 .info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .info h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 0.3rem 0;
 }
 
 .price {
   font-weight: 600;
-  margin: 0;
+  margin: 0 0 0.2rem 0;
 }
 
 .description {
@@ -63,34 +66,69 @@
   line-height: 1.4;
 }
 
-/* KØB-knappen */
+/* Køb-knap */
 .buyButton {
-  align-self: center;
-  padding: 0.55rem 1.4rem;
-  border-radius: 999px;
+  flex-shrink: 0;
   border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.6rem;
   background: #ff7aa8;
   color: #fff;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(255, 122, 168, 0.4);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.buyButton:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(255, 122, 168, 0.5);
-}
-
-.buyButton:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(255, 122, 168, 0.4);
-}
-
-/* Loading-tekst */
+/* Loading tekst */
 .loading {
   text-align: center;
-  margin-top: 3rem;
-  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+/* ----- SMÅ SKÆRME (mobil) ----- */
+@media (max-width: 600px) {
+  .item {
+    padding: 1.2rem;
+    gap: 0.9rem;
+  }
+
+  .image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .info h2 {
+    font-size: 0.95rem;
+  }
+
+  .buyButton {
+    padding: 0.55rem 1.4rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ----- STØRRE SKÆRME ----- */
+@media (min-width: 1024px) {
+  .page {
+    padding-top: 3rem;
+  }
+
+  .item {
+    padding: 1.8rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .image {
+    width: 110px;
+    height: 110px;
+  }
+
+  .info h2 {
+    font-size: 1.1rem;
+  }
+
+  .buyButton {
+    padding: 0.7rem 2rem;
+  }
 }

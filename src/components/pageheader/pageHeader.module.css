@@ -1,68 +1,72 @@
+/* Hero wrapper – følger main-bredden */
 .wrapper {
   width: 100%;
-  max-width: 1100px;   /* matcher main */
-  margin: 0 auto 3rem; /* centreret + afstand ned til indhold */
+  max-width: 1100px;
+  margin: 0 auto 3rem auto;
   text-align: center;
+  box-sizing: border-box;
 }
 
-/* Hero-billedet følger nu bare bredden på .wrapper */
+/* hero-billedet fylder altid 100% af wrapperen */
 .image {
   width: 100%;
   height: auto;
-  object-fit: cover;
-  object-position: center;
   display: block;
+  object-fit: cover;
 }
 
-/* Boksen under billedet */
+/* boksen under billedet */
 .box {
-  padding: 2rem 1.5rem;
+  padding: 1.75rem 1.25rem;
 }
 
 .box h1 {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
 }
 
 .box p {
-  max-width: 280px;
-  margin: 0 auto 1.5rem;
+  max-width: 28rem;
+  margin: 0 auto 1.5rem auto;
   line-height: 1.5;
+  font-size: 14px;
 }
 
-/* Knap – bruges fx på forsiden */
+/* knap / link (bruges på forsiden og CTA’er) */
 .button {
-  border: none;
+  display: inline-block;
   border-radius: 999px;
-  padding: 0.8rem 2rem;
+  padding: 0.75rem 1.9rem;
   font-size: 0.95rem;
+  border: none;
+  text-decoration: none;
   cursor: pointer;
 }
 
-/* ---------- VARIANTER ---------- */
+/* -------- VARIANTER -------- */
 
-/* Lyserød boks + hvid knap (Forside / Spørg om sundhed) */
+/* Lyserød (forsiden + spørg om sundhed) */
 .pink .box {
   background: #ff9fc4;
 }
 
 .pink .button {
   background: #ffffff;
-  color: #333;
+  color: #333333;
 }
 
-/* Helt lys (Bliv medlem) */
+/* Lys (bliv medlem) */
 .white .box {
   background: #fdeff4;
 }
 
 .white .button {
   background: #ff7aa8;
-  color: #fff;
+  color: #ffffff;
 }
 
-/* Sort boks, hvid tekst (Produkter) */
+/* Mørk (produkter) */
 .dark .box {
   background: #000000;
   color: #ffffff;
@@ -70,5 +74,42 @@
 
 .dark .button {
   background: #ffffff;
-  color: #000;
+  color: #000000;
+}
+
+/* ---------- TABLET (≥ 768px) ---------- */
+@media (min-width: 768px) {
+  .box {
+    padding: 2rem 2rem;
+  }
+
+  .box h1 {
+    font-size: 30px;
+  }
+
+  .box p {
+    font-size: 15px;
+  }
+}
+
+/* ---------- DESKTOP (≥ 1024px) ---------- */
+@media (min-width: 1024px) {
+  .box h1 {
+    font-size: 34px;
+  }
+
+  .box p {
+    font-size: 16px;
+  }
+}
+
+/* ---------- STORE SKÆRME (≥ 1440px) ---------- */
+@media (min-width: 1440px) {
+  .wrapper {
+    max-width: 1200px;
+  }
+
+  .box h1 {
+    font-size: 38px;
+  }
 }
