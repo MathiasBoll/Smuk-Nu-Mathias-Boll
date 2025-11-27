@@ -2,10 +2,12 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaShoppingBasket, FaBars } from "react-icons/fa";
+import { useCart } from "../../hooks/useCart.jsx";
 import styles from "./navigation.module.css";
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { count } = useCart(); // antal varer i kurven
 
   function toggleMenu() {
     setIsOpen((prev) => !prev);
@@ -14,6 +16,16 @@ function Navigation() {
   function handleNavClick() {
     // Luk menuen, når man klikker på et link
     setIsOpen(false);
+  }
+
+  function handleCartClick() {
+    // Lige nu bare en lille feedback – selve kurv-siden kan laves senere
+    // Du kan evt. åbne et modal eller en /cart-side her.
+    if (count === 0) {
+      alert("Din kurv er tom.");
+    } else {
+      alert(`Du har ${count} vare${count === 1 ? "" : "r"} i kurven.`);
+    }
   }
 
   return (
@@ -29,8 +41,15 @@ function Navigation() {
 
           {/* Ikoner til højre */}
           <div className={styles.icons}>
-            <button className={styles.iconButton} aria-label="Kurv">
+            <button
+              className={styles.iconButton}
+              aria-label="Kurv"
+              onClick={handleCartClick}
+            >
               <FaShoppingBasket />
+              {count > 0 && (
+                <span className={styles.cartBadge}>{count}</span>
+              )}
             </button>
 
             <button
@@ -45,7 +64,7 @@ function Navigation() {
         </div>
       </header>
 
-      {/* Dropdown-menu – ligger UNDER headeren og skubber main ned */}
+      {/* Dropdown-menu – ligger UNDER headeren */}
       <nav
         className={`${styles.dropdown} ${
           isOpen ? styles.dropdownOpen : ""

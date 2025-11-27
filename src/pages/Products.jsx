@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../services/api";
 import { toast } from "react-toastify";
+import { useCart } from "../hooks/useCart.jsx";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { addItem, count } = useCart();
 
   useEffect(() => {
     async function load() {
@@ -38,6 +40,20 @@ function Products() {
             <h2>{product.title}</h2>
             {product.price && <p>{product.price} kr.</p>}
             {product.description && <p>{product.description}</p>}
+
+            <button
+              type="button"
+              onClick={() => {
+                addItem(product);
+                toast.success(
+                  `Tilføjet til kurv. Du har nu ${count + 1} vare${
+                    count + 1 === 1 ? "" : "r"
+                  } i kurven.`
+                );
+              }}
+            >
+              KØB
+            </button>
           </li>
         ))}
       </ul>
