@@ -34,6 +34,7 @@ function Products() {
         subtitle="Herunder finder du alle vores produkter."
       />
 
+      {/* Hele produktsiden */}
       <section className={styles.products}>
         <ul className={styles.list}>
           {products.map((product) => (

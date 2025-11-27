@@ -42,6 +42,7 @@ main h3,
 main p,
 main ul {
   max-width: 900px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -84,4 +85,142 @@ main ul li {
 main p {
   line-height: 1.6;
   margin-bottom: 1.2rem;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* TABLET & NED (≤ 1024px) */
+@media (max-width: 1024px) {
+  main {
+    max-width: 100%;
+    padding: 0 1.25rem 2rem;
+  }
+
+  main h1 {
+    font-size: 34px;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+
+  main h2 {
+    font-size: 22px;
+    margin-top: 2.4rem;
+    margin-bottom: 1.3rem;
+  }
+
+  main h3 {
+    font-size: 17px;
+  }
+
+  main ul {
+    padding-left: 1.3rem;
+  }
+}
+
+/* LILLE TABLET / STOR MOBIL (≤ 768px) */
+@media (max-width: 768px) {
+  main {
+    padding: 0 1rem 2rem;
+  }
+
+  main h1 {
+    font-size: 30px;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+
+  main h2 {
+    font-size: 20px;
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  main h3 {
+    font-size: 16px;
+  }
+
+  main p {
+    font-size: 0.95rem;
+  }
+
+  main ul {
+    padding-left: 1.2rem;
+  }
+}
+
+/* SMÅ MOBILER (≤ 425px) */
+@media (max-width: 425px) {
+  main {
+    padding: 0 0.75rem 2rem;
+  }
+
+  main h1 {
+    font-size: 26px;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  main h2 {
+    font-size: 18px;
+    margin-top: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  main h3 {
+    font-size: 15px;
+  }
+
+  main p {
+    font-size: 0.9rem;
+  }
+
+  main ul {
+    padding-left: 1.1rem;
+  }
+}
+
+/* EKSTRA SMÅ (≤ 375px) */
+@media (max-width: 375px) {
+  main {
+    padding: 0 0.6rem 2rem;
+  }
+
+  main h1 {
+    font-size: 24px;
+  }
+
+  main h2 {
+    font-size: 17px;
+  }
+
+  main p {
+    font-size: 0.88rem;
+  }
+
+  main ul {
+    padding-left: 1rem;
+  }
+}
+
+/* MINI (≤ 320px) */
+@media (max-width: 320px) {
+  main {
+    padding: 0 0.5rem 2rem;
+  }
+
+  main h1 {
+    font-size: 22px;
+  }
+
+  main h2 {
+    font-size: 16px;
+  }
+
+  main p {
+    font-size: 0.85rem;
+  }
+
+  main ul {
+    padding-left: 0.9rem;
+  }
 }
