@@ -1,4 +1,5 @@
 // src/components/Pageheader/PageHeader.jsx
+import { Link } from "react-router-dom";
 import heroImg from "../../assets/hero.jpg";
 import styles from "./pageHeader.module.css";
 
@@ -8,7 +9,14 @@ import styles from "./pageHeader.module.css";
  *  - "white" (bliv medlem)
  *  - "dark"  (produkter)
  */
-function PageHeader({ title, subtitle, buttonText, onButtonClick, variant = "pink" }) {
+function PageHeader({
+  title,
+  subtitle,
+  buttonText,
+  buttonLink,
+  onButtonClick,
+  variant = "pink",
+}) {
   return (
     <header className={`${styles.wrapper} ${styles[variant]}`}>
       <img src={heroImg} alt="" className={styles.image} />
@@ -17,10 +25,18 @@ function PageHeader({ title, subtitle, buttonText, onButtonClick, variant = "pin
         <h1>{title}</h1>
         {subtitle && <p>{subtitle}</p>}
 
+        {/* Hvis buttonLink gives → brug Link  
+            Ellers → brug gamle onButtonClick */}
         {buttonText && (
-          <button className={styles.button} onClick={onButtonClick}>
-            {buttonText}
-          </button>
+          buttonLink ? (
+            <Link to={buttonLink} className={styles.button}>
+              {buttonText}
+            </Link>
+          ) : (
+            <button className={styles.button} onClick={onButtonClick}>
+              {buttonText}
+            </button>
+          )
         )}
       </div>
     </header>
