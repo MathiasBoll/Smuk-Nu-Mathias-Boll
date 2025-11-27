@@ -24,10 +24,10 @@ body {
 /* --- MAIN CONTENT WRAPPER --- */
 main {
   flex: 1;
-  max-width: 1100px; /* centrér indhold som i Figma */
+  max-width: 1100px;          /* centrér indhold som i Figma */
   margin: 0 auto;
-  padding: 0 1rem 2rem; /* INGEN top-padding → ingen hul over navigationen */
-  text-align: left; /* tekst venstrestillet */
+  padding: 0 1rem 2rem;       /* INGEN top-padding -> ingen hul over navigationen */
+  text-align: left;
 }
 
 /* --- STANDARD TYPOGRAPHY --- */
@@ -36,7 +36,7 @@ main h2,
 main h3,
 main p,
 main ul {
-  max-width: 900px; /* smallere content, matcher Figma */
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -67,7 +67,7 @@ main h3 {
 
 /* --- LISTE STYLE --- */
 main ul {
-  padding-left: 1.4rem; /* korrigerer bullets */
+  padding-left: 1.4rem;
   margin-bottom: 1rem;
 }
 

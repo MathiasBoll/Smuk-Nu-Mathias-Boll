@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Swal from "sweetalert2";
 import { createMember } from "../services/api";
+import PageHeader from "../components/pageheader/PageHeader.jsx";
 import styles from "./join.module.css";
 
 const schema = yup.object({
@@ -27,7 +28,6 @@ function Join() {
 
   async function onSubmit(data) {
     try {
-      // Tilpas til dit API: createMember forventer (name, email, content)
       await createMember({
         name: data.name,
         email: data.email,
@@ -51,46 +51,46 @@ function Join() {
   }
 
   return (
-    <div className={styles.page}>
-      {/* HERO */}
-      <header className={styles.hero}>
-        <h1>BLIV MEDLEM</h1>
-        <p>
-          Herunder har vi samlet særlige fordele til medlemmer af vores
-          kundeklub. Tilmeld dig og få nyheder, rabatter og meget mere.
-        </p>
-      </header>
+    <>
+      {/* Hero med hvid variant som i Figma */}
+      <PageHeader
+        variant="white"
+        title="BLIV MEDLEM"
+        subtitle="Herunder har vi samlet særlige fordele til medlemmer af vores kundeklub. Tilmeld dig og få nyheder, rabatter og meget mere."
+      />
 
-      {/* FORMULAR */}
-      <section className={styles.formSection}>
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <div className={styles.field}>
-            <label htmlFor="name">Fulde navn</label>
-            <input id="name" {...register("name")} />
-            {errors.name && (
-              <p className={styles.error}>{errors.name.message}</p>
-            )}
-          </div>
+      {/* Formular-del */}
+      <main className={styles.page}>
+        <section className={styles.formSection}>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <div className={styles.field}>
+              <label htmlFor="name">Fulde navn</label>
+              <input id="name" {...register("name")} />
+              {errors.name && (
+                <p className={styles.error}>{errors.name.message}</p>
+              )}
+            </div>
 
-          <div className={styles.field}>
-            <label htmlFor="email">Email</label>
-            <input id="email" type="email" {...register("email")} />
-            {errors.email && (
-              <p className={styles.error}>{errors.email.message}</p>
-            )}
-          </div>
+            <div className={styles.field}>
+              <label htmlFor="email">Email</label>
+              <input id="email" type="email" {...register("email")} />
+              {errors.email && (
+                <p className={styles.error}>{errors.email.message}</p>
+              )}
+            </div>
 
-          <div className={styles.field}>
-            <label htmlFor="note">Ris og/eller ros</label>
-            <textarea id="note" rows="3" {...register("note")} />
-          </div>
+            <div className={styles.field}>
+              <label htmlFor="note">Ris og/eller ros</label>
+              <textarea id="note" rows="3" {...register("note")} />
+            </div>
 
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Sender..." : "Opret"}
-          </button>
-        </form>
-      </section>
-    </div>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Sender..." : "Opret"}
+            </button>
+          </form>
+        </section>
+      </main>
+    </>
   );
 }
 

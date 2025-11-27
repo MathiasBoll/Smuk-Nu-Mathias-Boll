@@ -1,13 +1,14 @@
 // src/pages/Products.jsx
 import { useEffect, useState } from "react";
+import PageHeader from "../components/pageheader/PageHeader.jsx";
 import { getProducts } from "../services/api";
-import { toast } from "react-toastify";
-import { useCart } from "../hooks/useCart.jsx";
+import { useCart } from "../hooks/useCart";
+import styles from "./products.module.css";
 
 function Products() {
+  const { addItem } = useCart();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addItem, count } = useCart();
 
   useEffect(() => {
     async function load() {
@@ -15,8 +16,7 @@ function Products() {
         const data = await getProducts();
         setProducts(data);
       } catch (err) {
-        console.error(err);
-        toast.error("Kunne ikke hente produkterne");
+        console.error("Kunne ikke hente produkterne", err);
       } finally {
         setLoading(false);
       }
@@ -25,39 +25,58 @@ function Products() {
     load();
   }, []);
 
-  if (loading) return <p>Henter produkter...</p>;
+  if (loading) return <p className={styles.loading}>Henter produkter...</p>;
 
   return (
-    <section>
-      <h1>Produkter</h1>
+    <>
+      {/* Hero til produktsiden */}
+      <PageHeader
+        variant="dark"
+        title="SKØNNE PRODUKTER"
+        subtitle="Herunder finder du alle vores produkter."
+      />
 
-      <ul>
-        {products.map((product) => (
-          <li key={product._id ?? product.id}>
-            {product.image && (
-              <img src={product.image} alt={product.title} width={120} />
-            )}
-            <h2>{product.title}</h2>
-            {product.price && <p>{product.price} kr.</p>}
-            {product.description && <p>{product.description}</p>}
+      <main className={styles.page}>
+        <section className={styles.productsList}>
+          <ul className={styles.list}>
+            {products.map((product) => (
+              <li
+                key={product._id ?? product.id}
+                className={styles.item}
+              >
+                {product.image && (
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className={styles.image}
+                  />
+                )}
 
-            <button
-              type="button"
-              onClick={() => {
-                addItem(product);
-                toast.success(
-                  `Tilføjet til kurv. Du har nu ${count + 1} vare${
-                    count + 1 === 1 ? "" : "r"
-                  } i kurven.`
-                );
-              }}
-            >
-              KØB
-            </button>
-          </li>
-        ))}
-      </ul>
-    </section>
+                <div className={styles.info}>
+                  <h2>{product.title}</h2>
+                  {product.price && (
+                    <p className={styles.price}>{product.price} kr.</p>
+                  )}
+                  {product.description && (
+                    <p className={styles.description}>
+                      {product.description}
+                    </p>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  className={styles.buyButton}
+                  onClick={() => addItem(product)}
+                >
+                  KØB
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+    </>
   );
 }
 
