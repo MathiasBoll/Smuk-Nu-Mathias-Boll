@@ -60,8 +60,8 @@ function Join() {
       />
 
       {/* Formular-del */}
-      <main className={styles.page}>
-        <section className={styles.formSection}>
+      <section className={styles.page}>
+        <div className={styles.formSection}>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className={styles.field}>
               <label htmlFor="name">Fulde navn</label>
@@ -88,8 +88,8 @@ function Join() {
               {isSubmitting ? "Sender..." : "Opret"}
             </button>
           </form>
-        </section>
-      </main>
+        </div>
+      </section>
     </>
   );
 }

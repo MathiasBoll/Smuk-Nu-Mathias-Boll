@@ -1,75 +1,99 @@
+/* src/pages/join.module.css */
+
+/* Wrapper omkring formularen – ligger under hero */
 .page {
-  max-width: 420px;
-  margin: 0 auto;
-  background-color: #ffffff;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
 }
 
-/* HERO */
-.hero {
-  background-color: #ff7aa8;
-  color: #ffffff;
-  text-align: center;
-  padding: 2.5rem 1.5rem 2rem;
-}
-
-.hero h1 {
-  font-size: 1.6rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0 0 1rem;
-}
-
-.hero p {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* FORM */
+/* Selve formularsektionen */
 .formSection {
-  padding: 2rem 1.5rem 3rem;
+  margin-top: 0.5rem;
 }
 
+/* Formularen */
 .formSection form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.6rem;
+}
+
+/* En enkelt form-gruppe */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .field label {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #444;
 }
 
+/* Inputs og textarea – samme look som kontaktform */
 .field input,
 .field textarea {
   width: 100%;
-  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  padding: 0.5rem 0.6rem;
-  font: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background-color: #fff;
 }
 
-button {
-  align-self: center;
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #ff7aa8;
+  box-shadow: 0 0 0 3px rgba(255, 122, 168, 0.25);
+}
+
+/* Fejltekst */
+.error {
+  color: #e63946;
+  font-size: 0.85rem;
+  margin-top: -0.15rem;
+}
+
+/* Lyserød "Opret"-knap */
+button[type="submit"] {
   margin-top: 0.5rem;
-  padding: 0.55rem 2.2rem;
-  border-radius: 999px;
-  border: none;
-  background-color: #ff7aa8;
+  align-self: flex-start;
+  background: #ff7aa8;
   color: #ffffff;
+  border: none;
+  padding: 0.9rem 2.4rem;
+  border-radius: 999px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 122, 168, 0.35);
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
-button:disabled {
-  opacity: 0.7;
-  cursor: default;
+button[type="submit"]:hover {
+  transform: translateY(-2px);
 }
 
-.error {
-  color: #d62525;
-  font-size: 0.8rem;
-  margin-top: 0.2rem;
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Små skærme – lidt mindre padding så det ikke føles trængt */
+@media (max-width: 480px) {
+  .page {
+    margin-bottom: 3rem;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    text-align: center;
+    align-self: stretch;
+  }
 }
