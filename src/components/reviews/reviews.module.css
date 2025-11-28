@@ -1,34 +1,94 @@
+/* src/components/reviews/reviews.module.css */
+
 .reviews {
+  margin: 3rem auto 0;
+  padding: 0 1rem 3rem;
+  max-width: 900px;
   text-align: center;
-  margin-bottom: 4rem;
 }
 
+/* Sektionens overskrift */
+.reviews h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* Wrapper til alle kort */
 .list {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
 }
 
+/* Selve review-kortet */
 .review {
-  max-width: 700px;
+  background: #ffffff;
+  padding: 2.2rem 1.6rem;
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
 }
 
+/* Rundt billede med lyserød kant */
 .image {
-  width: 120px;
-  height: 120px;
-  border-radius: 4px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  border: 4px solid #ff7aa8;
   object-fit: cover;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
+/* Navn */
 .review h3 {
-  font-size: 18px;
+  margin: 0 0 0.4rem 0;
+  font-size: 1.05rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  color: #111111;
 }
 
+/* Selve anmeldelsesteksten */
 .review p {
-  line-height: 1.6;
-  font-size: 15px;
+  margin: 0.3rem auto 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #333333;
+  max-width: 280px;
+
+  /* gør linjerne jævne og pæne */
+  text-align: justify;
+  text-align-last: center;
+
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+/* --- Tablet: flere kort ved siden af hinanden --- */
+@media (min-width: 768px) {
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.2rem;
+  }
+
+  .review {
+    max-width: 320px;
+  }
+}
+
+/* --- Store skærme --- */
+@media (min-width: 1024px) {
+  .reviews h2 {
+    font-size: 1.8rem;
+  }
+
+  .review {
+    padding: 2.4rem 1.8rem;
+  }
 }
